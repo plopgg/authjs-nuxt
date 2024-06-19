@@ -9,6 +9,17 @@
     "test",
     "docs"
   ],
+  "exports": {
+    ".": {
+      "import": "./packages/authjs-nuxt/dist/module.mjs",
+      "require": "./packages/authjs-nuxt/dist/module.cjs"
+    }
+  },
+  "main": "./packages/authjs-nuxt/dist/module.cjs",
+  "types": "./packages/authjs-nuxt/dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rimraf packages/*/dist && cd packages/authjs-nuxt && bun run build",
     "prepare:types": "cd packages/authjs-nuxt && nuxi prepare",
