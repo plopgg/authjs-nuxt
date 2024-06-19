@@ -27,6 +27,12 @@ export function getServerOrigin(event: H3Event, runtimeConfig?: Partial<RuntimeC
 export function checkOrigin(request: Request, runtimeConfig: Partial<RuntimeConfig>) {
   if (process.env.NODE_ENV === "development") return
   if (request.method !== "POST") return // Only check post requests
+
+  // todo - improve this with some configuration?
+  // disable origin enforcement to support multi-tenancy
+  // CSRF protection is gained in other ways
+  return
+
   const requestOrigin = request.headers.get("Origin")
   const serverOrigin = runtimeConfig.public?.authJs?.baseUrl
   if (serverOrigin !== requestOrigin)
